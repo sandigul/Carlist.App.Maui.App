@@ -1,4 +1,7 @@
-﻿namespace Carlist.App.Maui;
+﻿using Carlist.App.Maui.Services;
+using Carlist.App.Maui.ViewModels;
+
+namespace Carlist.App.Maui;
 
 public static class MauiProgram
 {
@@ -12,7 +15,10 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+		builder.Services.AddSingleton <CarService>();
+        builder.Services.AddSingleton<CarListViewModel>();
+        builder.Services.AddSingleton<MainPage>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
