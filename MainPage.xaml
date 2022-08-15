@@ -16,7 +16,8 @@
                         <Grid Padding="10">
                             <Frame HeightRequest="90">
                                 <Frame.GestureRecognizers>
-                                    <!--<TapGestureRecognizer Command="" CommandParameter=""/>-->
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CarListViewModel}}, Path=GetCarDetailsCommand}" 
+                                                          CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <HorizontalStackLayout Padding="10" Spacing="5">
                                     <Label Text="{Binding Make}"></Label>
@@ -30,8 +31,8 @@
 
             </CollectionView>
         </RefreshView>
-        
-        <Button Text="Fetch Cars" Command="{Binding GetCarListCommand}" Grid.Row="1" Grid.Column="0" Margin="9"></Button>
+
+        <Button Text="Fetch Cars" Command="{Binding GetCarListCommand}" IsEnabled="{Binding IsRefreshing}"  Grid.Row="1" Grid.Column="0" Margin="9"></Button>
     </Grid>
 
 </ContentPage>

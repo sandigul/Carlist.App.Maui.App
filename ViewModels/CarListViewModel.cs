@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
+using Carlist.App.Maui.Views;
 
 namespace Carlist.App.Maui.ViewModels
 {
@@ -55,5 +56,15 @@ namespace Carlist.App.Maui.ViewModels
             }
         }
 
+        [RelayCommand]
+        async Task GetCarDetails( Car car)
+        {
+            if (car == null) return;
+
+            await Shell.Current.GoToAsync(nameof(CarDetailsPage), true, new Dictionary<string, object>
+                {
+                    {"Car",car }
+                });
+        }
     }
 }
